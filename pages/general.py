@@ -30,7 +30,7 @@ def forecast(ticker='AAPL', period='1mo', lookback=60, forecast=30):
     Inputs:
         ticker: stock ticker
         start: starting date for stock history
-        end: ening date for stock history
+        end: ending date for stock history
         lookback: how far model looks back for values?
         forecast: how far into the future to forecast price
     Outputs:
@@ -90,7 +90,7 @@ def forecast(ticker='AAPL', period='1mo', lookback=60, forecast=30):
 
     # print(df_past)
     # print(df_future)
-    
+
     results = pd.concat([df_past, df_future], ignore_index=True).set_index('Date')
 
     # print(results)
@@ -221,7 +221,7 @@ def plot_data(go_button, ticker, period_hist, lookback_range, forecast_range):
         case '1 Year': period = '1y'
         case '5 Years': period = '5y'
         case '10 Years': period = '10y'
-    
+
     # translating lookback range
     lb_range = 0
     match lookback_range:
@@ -249,5 +249,5 @@ def plot_data(go_button, ticker, period_hist, lookback_range, forecast_range):
         dummy = pd.DataFrame(dict(x = [1], y = [1]))
         fig_line_plotly = px.line(dummy, x=dummy.x, y=dummy.y)#.update_xaxes(tickangle=330)
         return fig_line_plotly, 'Failed to create graph (possible reasons: invalid ticker symbol, forecast range >= lookback range >= price history, missing input values)'
-    
+
 
